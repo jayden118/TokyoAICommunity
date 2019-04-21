@@ -3,7 +3,7 @@
 Environment Setup:
 1.  Delete previous created virtual python environment in Anaconda
 2.  Create a Python 3.5 or 3.6 virtual environment
-3.  Install Spyder version 3.2.8 (Note that, spyder 3.3.4 or 3.3.3 console may not able to work python 3.5 and 3.6)
+3.  Install Spyder version 3.2.8 (Note that, spyder 3.3.4 or 3.3.3 console may not able to work python in 3.5 and 3.6 env)
 4.  Install Theano 1.0.1
 5.  Install Tensorflow 1.9.0
 6.  Install Keras 2.1.6
