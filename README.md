@@ -12,6 +12,7 @@ Environment Setup:
 9.  Install matplotlib 2.2.2
 10. Install pandas 0.22.0
 11. Install Pillow 5.1.0
-With these setup, codes for all coming lessons are able to run in your machine
+
+*With these setup, codes for all coming lessons are able to run in your machine.
 Good luck!
 
