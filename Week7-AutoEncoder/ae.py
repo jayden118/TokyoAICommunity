@@ -104,8 +104,54 @@ for id_user in range(nb_users):
         s += 1.
 print('test loss: '+str(test_loss/s))
 
-user_id = 22
+user_id = 23
 user_input = Variable(test_set[user_id-1]).unsqueeze(0)
 output = sae.predict(user_input)
 output = output.data.numpy()
 input_output = np.vstack([user_input, output])
+
+# Recommend list of movies for specific user
+from operator import itemgetter
+
+def Prediction(user_id, nb_recommend):
+    user_input = Variable(test_set[user_id - 1]).unsqueeze(0)
+    predict_output = sae.predict(user_input)
+    predict_output = predict_output.data.numpy()
+    predicted_result = np.vstack([user_input, predict_output])
+    
+    trian_movie_id = np.array([i for i in range(1, nb_movies+1)]) # Create a temporary index for movies since we are going to delete some movies that the user had seen,
+    recommend = np.array(predicted_result)
+    recommend = np.row_stack((recommend, trian_movie_id)) # Insert that index into the result array,
+    recommend = recommend.T # Transpose row and col
+    recommend = recommend.tolist() # Transfer into list for further process
+    
+    movie_not_seen = [] # Delete the rows comtaining the movies that the user had seen
+    for i in range(len(recommend)):
+        if recommend[i][0] == 0.0:
+            movie_not_seen.append(recommend[i])
+
+movie_not_seen = sorted(movie_not_seen, key=itemgetter(1), reverse=True) # Sort the movies by mark
+
+    recommend_movie = [] # Create list for recommended movies with the index we created
+    for i in range(0, nb_recommend):
+        recommend_movie.append(movie_not_seen[i][2])
+    
+    recommend_index = [] # Get the real index in the original file of 'movies.dat' by using the temporary index
+    for i in range(len(recommend_movie)):
+        recommend_index.append(movies[(movies.iloc[:,0]==recommend_movie[i])].index.tolist())
+    
+    recommend_movie_name = [] # Get a list of movie names using the real index
+    for i in range(len(recommend_index)):
+        np_movie = movies.iloc[recommend_index[i],1].values # Transefer to np.array
+        list_movie = np_movie.tolist() # Transfer to list
+        recommend_movie_name.append(list_movie)
+    
+    print('Highly Recommended Moives for You:\n')
+    for i in range(len(recommend_movie_name)):
+        print(str(recommend_movie_name[i]))
+    
+    return recommend_movie_name
+
+user_id = 367
+nb_recommend = 20
+movie_for_you = Prediction(user_id = user_id, nb_recommend = nb_recommend)
