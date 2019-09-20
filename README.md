@@ -16,7 +16,14 @@ Environment Setup:
 
 *With these setup, codes for all coming lessons are able to run in your machine.
 
+<<<<<<< HEAD
 https://docs.google.com/spreadsheets/d/1P9QDAYStoyuXREDnBdENrBtMSd3r5SUGXkEHc1gnswU/edit?usp=sharing
+=======
+TensorFlow 2.0 Resources
+
+https://docs.google.com/spreadsheets/d/1P9QDAYStoyuXREDnBdENrBtMSd3r5SUGXkEHc1gnswU/edit?usp=sharing
+
+>>>>>>> 4d57c24d3170e27ba34009f02f9e78aae5480033
 
 Good luck!
 
