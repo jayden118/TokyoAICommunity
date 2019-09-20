@@ -15,5 +15,8 @@ Environment Setup:
 12. Change iPython to 7.2
 
 *With these setup, codes for all coming lessons are able to run in your machine.
+
+https://docs.google.com/spreadsheets/d/1P9QDAYStoyuXREDnBdENrBtMSd3r5SUGXkEHc1gnswU/edit?usp=sharing
+
 Good luck!
 
